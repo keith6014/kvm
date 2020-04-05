@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
+
 iso="/home/user/kvm/iso/CentOS-7-x86_64-Minimal-1908.iso"
+name="test4"
+pool="centos"
 
-path="/data/guest_images/centosVol0"
+createVolume() { 
+	virsh dumpxml $name 1>/dev/null && { echo "$name already exists"; exit 1;}
+	virsh vol-dumpxml centosVol_$name --pool $pool || virsh vol-create-as $pool centosVol_$name 3GB
+}
 
-virsh vol-create-as guest_images centosVol0 3GB
 
-sudo virt-install --name=test3 \
+path="/data/$pool/centosVol_$name"
+
+createVolume
+
+sudo virt-install --name="$name" \
 	--vcpus=1 \
 	--memory=1024 \
 	--location "$iso" \

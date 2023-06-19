@@ -16,6 +16,7 @@ createVolume
 
 sudo virt-install --name="$name" \
 	--vcpus=1 \
+	-cpu host \ #perf improvement
 	--memory=1024 \
 	--location "$iso" \
 	--boot cdrom \

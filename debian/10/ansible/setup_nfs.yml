@@ -1,0 +1,14 @@
+---
+- name: setup debian 10 packages
+  hosts: all
+  remote_user: root
+  gather_facts: true
+
+  tasks:
+  - name: Install Packages
+    ansible.builtin.apt:
+      name: "{{ item.name }}"
+      state: present
+    with_items:
+      - { name: "nfs-kernel-server" }
+      - { name: "portmap" }

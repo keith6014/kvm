@@ -4,3 +4,11 @@
     ansible_user: ansible
   hosts: all
   gather_facts: yes
+  tasks:
+    - name: Install kerberos package
+      become: true
+      ansible.builtin.package:
+        name: ntpdate
+        state: present
+      when: 
+        - ansible_os_family == 'Debian'

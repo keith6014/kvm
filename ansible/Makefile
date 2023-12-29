@@ -1,6 +1,8 @@
 SHELL=/bin/sh
 
-all: f
+all: simple.yml
 
-f:
-	ansible-playbook  -i inventory/hosts setup_kerberos.yml
+.PHONY: simple.yml
+
+simple.yml:
+	ansible-playbook  -i inventory/hosts simple.yml

@@ -36,3 +36,13 @@ virt-viewer #gui
 virsh destroy vmname
 virsh undefine vmname
 ```
+
+=== Network assign ip addr ===
+* Generate MAC address
+```bash
+  perl -e 'for ($i=00;$i<6;$i++){@m[$i]=int(rand(256));} printf "00:16:3E:%X:%X:%X\n",@m;'
+```
+* Build Vm
+  ```bash
+  build debian10b /data/ssd/libvirt "macaddress"
+  ```

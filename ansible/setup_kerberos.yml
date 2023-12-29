@@ -1,0 +1,6 @@
+---
+- name: Gather system facts
+  vars:
+    ansible_user: ansible
+  hosts: all
+  gather_facts: yes

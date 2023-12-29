@@ -30,3 +30,9 @@ virsh vol-create-as guest_images volume 1 4GB
 ```bash
 virt-viewer #gui
 ```
+
+==== Remove a VM ===
+```bash
+virsh destroy vmname
+virsh undefine vmname
+```

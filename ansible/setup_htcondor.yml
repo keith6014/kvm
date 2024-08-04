@@ -1,0 +1,16 @@
+---
+- name: "setup htcondor"
+  vars:
+    url: https://research.cs.wisc.edu/htcondor/tarball/23.0/23.0.15/daily/condor-23.0.15-x86_64_Debian12-stripped.tar.gz
+  hosts: all
+  gather_facts: false
+  user: ansible
+  tasks:
+
+    - name: Download htcondor
+      ansible.builtin.unarchive:
+        src: "{{ url }}"
+        dest: /tmp
+        remote_src: yes
+      tags:
+        - download

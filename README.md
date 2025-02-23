@@ -1,3 +1,16 @@
+[debian based disable autostart](#debian_no_autostart)
+
+<!-- markdown code between the link & anchor-tag -->
+
+<a id="debian_no_autostart"></a>
+
+# debian based disable autostart
+```bash
+systemctl mask libvirtd
+#systemctl unmask libvirtd.service 
+#systemctl start libvirtd.service
+```
+
 == show all VMs ==
 ```bash
 virsh list --all
